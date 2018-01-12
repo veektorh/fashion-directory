@@ -1,0 +1,393 @@
+﻿@model AspMvcStarter.Models.BigProfileViewModel
+
+@{
+    ViewBag.Title = "profile";
+}
+
+
+<style>
+    .cover {
+        padding:10px;
+        background: #636b6f;
+        /*background-image: linear-gradient( 135deg, #F97794 10%, #623AA2 100%);*/
+        /*background: url(../images/2.jpg) center no-repeat;*/
+        background: #BBD2C5; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #536976, #BBD2C5); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background:whitesmoke;
+        background-size: cover;
+        overflow: hidden;
+        
+    }
+
+    .text {
+        line-height: 20px;
+    }
+
+    .profile_image_container {
+        margin: 5px;
+        width: 200px;
+    }
+
+    .photo_container {
+        margin-bottom: 5px;
+        min-height: 400px;
+    }
+
+    .buttons a {
+        margin-bottom: 5px;
+    }
+
+    .result_box {
+        overflow: hidden;
+        padding: 10px;
+        margin: 10px;
+        background: whitesmoke;
+    }
+    .fs18{
+        font-size:18px;
+    }
+</style>
+<div>
+    <div class="container">
+        <div class="">
+            <div class="alert alert-danger error_status alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                An Error Occured Image could not be uploaded
+            </div>
+            <div class="cover">
+                <div class="row">
+                    <div class=" col-md-3" >
+                        <div class="profile_image_container">
+                            <img src="http://res.cloudinary.com/bolum-victor/image/upload/g_face,c_thumb,h_100,w_100/@ViewBag.PicturePublicId.@ViewBag.Format" style="min-width:200px;max-height:250px;" class="img-thumbnail img-responsive" alt="profile picture" />
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="col-md-8" >
+                            <h3 class=""> @Model.User.Name </h3>
+                            <h4 class=""> <i> @@@Model.User.Username </i> </h4>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-2"><span class="fs18"><b>@ViewBag.Posts</b></span> <span>posts</span> </div>
+                                <div class="col-md-2"><span class="fs18"><b>@ViewBag.Followers</b></span> <span>followers</span> </div>
+                                <div class="col-md-2"><span class="fs18"><b>@ViewBag.Following</b></span> <span>following</span> </div>
+                            </div>
+                            <br />
+
+                            <br />
+                            <div class="row buttons">
+                                @{
+                                    if (ViewBag.ProfileOwner)
+                                    {
+                                        <a href="#" class="btn btn-success btnUploadNewPhoto" style=""> <i class="glyphicon glyphicon-plus"></i> Upload photo </a>
+                                        <a href="#" class="btn btn-primary btnEdit" data-toggle="modal" data-target="#editProfileModal"><span class="fa fa-pencil "> </span> Edit Profile</a>
+                                    }
+
+                                    if (!ViewBag.ProfileOwner && ViewBag.isLoggedIn)
+                                    {
+                                        <a href="#" class="btn btn-success btnRemoveOrAddFromList">Remove From List</a>
+
+                                    }
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <br />
+                <div class="col-md-4 col-md-offset-4">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#about_tab" role="tab" data-toggle="tab">About</a></li>
+                        <li role="presentation" class=""><a href="#photos_tab" role="tab" data-toggle="tab">Photos</a></li>
+                        @if (ViewBag.ProfileOwner)
+                        {
+                            <li role="presentation" class=""><a href="#list_tab" role="tab" data-toggle="tab">List</a></li> }
+
+                    </ul>
+                </div>
+                <div class="col-md-4">
+
+
+                </div>
+            </div>
+
+
+            <div class="tab-content col-md-12" style="min-height: 600px">
+                <div role="tabpanel" class="tab-pane active col-md-6 col-md-offset-3" id="about_tab">
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-3">
+                            Bio :
+                        </div>
+                        <div class="col-xs-8 col-sm-9 text">
+                            @Model.User.Bio
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-3">
+                            Location :
+                        </div>
+                        <div class="col-xs-8 col-sm-9">
+                            @Model.User.Location
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-3">
+                            Phone :
+                        </div>
+                        <div class="col-xs-8 col-sm-9">
+                            @Model.User.Phone
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <a href="@Model.User.facebook" target="_blank"> <i class="fa fa-facebook-square fa-3x"></i> </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="@Model.User.twitter" target="_blank"> <i class="fa fa-twitter-square fa-3x"></i> </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="@Model.User.instgram" target="_blank"> <i class="fa fa-instagram fa-3x"></i> </a>
+                        </div>
+                    </div>
+                    <br />
+
+
+
+                </div>
+                <div role="tabpanel" class="tab-pane " id="photos_tab">
+                    <br />
+                    @foreach (var item in ViewBag.PictureUploads)
+                    {
+                        <div class="photo_container col-md-4">
+                            @if (item.Version != null)
+                            {
+                                <a title="Click to View Full Image" href="http://res.cloudinary.com/bolum-victor/image/upload/@item.Name.@item.Format"
+                                   target="_blank"><img src="http://res.cloudinary.com/bolum-victor/image/upload/@item.Name.@item.Format" style="min-width:300px; min-height:300px; max-width:300px; max-height:300px; width:auto; height:auto; border:4px solid whitesmoke;" class="" alt="profile picture" /></a>
+                                    <p> @item.Caption </p>
+
+                            }
+                            else
+                            {
+                                <a title="Click to View Full Image" href="@item.Name" target="_blank"><img src="@item.Name" style="min-width:300px; min-height:300px; max-width:300px; max-height:300px; width:auto; height:auto; border:4px solid whitesmoke;" class="" alt="profile picture" /></a>
+                                <p> @item.Caption </p>
+                            }
+                            
+                        </div>
+                    }
+
+                </div>
+                <div role="tabpanel" class="tab-pane " id="list_tab">
+                    @if (ViewBag.ProfileOwner)
+                    {
+                        if (Model.List.Count > 0)
+                        {
+                            foreach (var item in Model.List)
+                            {
+                                <div class="col-md-6">
+                                    <div class="result_box">
+                                        <div class="col-xs-4">
+                                            @if (@item.FollowedUser.Picture == null)
+                                            {
+                                                <img src="~/Images/blank-profile-picture.png" class="img-circle" width="50" alt="profile pic" />
+                                            }
+                                            else
+                                            {
+                                                <img src="@item.FollowedUser.Picture" class="img-circle" width="50" alt="profile pic" />
+                                            }
+                                        </div>
+                                        <div class="col-xs-8" style="margin-left:-0px;">
+                                            <div style="margin-top:0px;padding-left:0px">
+
+                                                <h4>@item.FollowedUser.Username</h4>
+                                                <h5>@item.FollowedUser.Location</h5>
+                                                <a href="/account/profile?username=@item.FollowedUser.Username">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="uploadNewPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close modalBtnDismiss" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Upload New Picture </h4>
+                </div>
+                <div class="modal-body">
+                    <label>Enter Caption : </label>
+                    <input type="text" class="form-control" id="captionText" />
+                    <img src="~/images/loader.gif" class="loader" />
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnUploadNewImage">Save Changes</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" class="uploadPicture2" accept=".jpg,.png,.jpeg" style="visibility:hidden" />
+    <input type="hidden" class="txtHiddenUsername" value="@Model.User.Username" />
+
+
+    @Html.Partial("_EditProfile", Model.EPVM)
+</div>
+<script>
+    $(".error_status").hide();
+    var user = $(".txtHiddenUsername").val(); //global username
+    
+    $(document).ready(function () {
+        setButtonRemoveOrAddListText();
+    })
+    
+    $(".btnRemoveOrAddFromList").click(function () {
+        var btntext = $(".btnRemoveOrAddFromList").text();
+
+        if (btntext.indexOf("Remove") > -1) {
+            RemoveUserFromList();
+        } else {
+            AddUserToList();
+        }
+    })
+
+    function AddUserToList() {
+        var addUrl = "/account/addToList";
+        var data = { Username: user };
+        $.post(addUrl, data, function (response) {
+            if (response == "success") {
+                $(".btnRemoveOrAddFromList").text("Remove to list");
+            }
+        })
+    }
+
+    function RemoveUserFromList() {
+        var removeUrl = "/account/RemoveFromList"
+        var data = { Username: user };
+        $.post(removeUrl, data, function (response) {
+            if (response == "success") {
+                $(".btnRemoveOrAddFromList").html('<i class="glyphicon glyphicon-plus"></i> Add to list');
+            }
+        })
+    }
+    function setButtonRemoveOrAddListText() {
+        var user = $(".txtHiddenUsername").val();
+        $.post("/account/JsonIsUserFollowing", {Username:user}, function (res) {
+            if (res) {
+                $(".btnRemoveOrAddFromList").text("Remove from list");
+            } else {
+                $(".btnRemoveOrAddFromList").html('<i class="glyphicon glyphicon-plus"></i>  Add to list');
+            }
+        })
+    }
+
+    //button to trigger the input file event to enable users to choose a picture to upload
+    $(".btnUploadNewPhoto").click(function () {
+        $(".uploadPicture2").click();
+    });
+
+    //clear the previous selected file in the input file control
+    $('#uploadNewPhoto').on('hidden.bs.modal', function () {
+        $(".uploadPicture2").val("");
+    })
+
+    //show confirmation modal to upload the profile picture
+    $(".uploadPicture2").on('change', function () {
+        if ($(".uploadPicture2").val() != "") {
+
+            $("#uploadNewPhoto").modal("show");
+        }
+
+    })
+
+    //ajax call to upload the image to the server
+    $("#btnUploadNewImage").click(function () {
+        $(".loader").show();
+        var file = $(".uploadPicture2").get(0).files;
+        var url = '/account/UploadNewPhoto';
+        var data = new FormData;
+        data.append("file", file[0]);
+        data.append("caption", $("#captionText").val())
+
+        $.ajax({
+            type: "Post",
+            url: url,
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                location.reload();
+            },
+            error: function (err) {
+                $("#uploadNewPhoto").modal("hide");
+                $(".error_status").show();
+        }
+        });
+
+    });
+
+    $(".btnEdit").click(function () {
+        var url = "/account/edit"
+        var data = {}
+        $.get(url, data, function (response) {
+            $("#editName").val(response.Name)
+            $("#editUsername").val(response.Username)
+            $("#editLocation").val(response.Location)
+            $("#editBio").val(response.Bio)
+            $("#editPhone").val(response.Phone)
+            $("#editTwitter").val(response.twitter)
+            $("#editFacebook").val(response.facebook)
+            $("#editInstagram").val(response.instagram)
+        })
+
+        $("#editProfileModal").modal("show")
+    })
+
+    $(".btnAddToList").click(function () {
+        //get username from hidden field then pass it to controller
+        var user = $(".txtHiddenUsername").val();
+        var url = "/account/addToList"
+        var data = { Username: user }
+        $.post(url, data, function (response) {
+            console.log(response)
+            location.reload()
+        })
+
+    })
+
+    $(".btnRemoveFromList").click(function () {
+        //get username from hidden field then pass it to controller
+        var user = $(".txtHiddenUsername").val();
+        var url = "/account/RemoveFromList"
+        var data = { Username: user }
+        $.post(url, data, function (response) {
+            console.log(response)
+            location.reload()
+        })
+
+    })
+</script>

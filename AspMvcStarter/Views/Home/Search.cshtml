@@ -1,0 +1,126 @@
+﻿
+@model IEnumerable<AspMvcStarter.Models.User>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+    .cover {
+        /*min-height: 250px;*/
+        background-image: linear-gradient( 135deg, #F97794 10%, #623AA2 100%);
+        background: #fff;
+        /*background: url("ViewBag.Picuteurl") center no-repeat;*/
+        background-size: cover;
+        overflow: hidden;
+        color: #fff;
+    }
+
+    .search_box {
+        width: 99%;
+        margin: 50px auto;
+    }
+
+    .mb5 {
+        margin-bottom: 10px;
+    }
+
+    .result_box {
+        overflow: hidden;
+        padding: 10px;
+        margin: 10px;
+        background: whitesmoke;
+    }
+
+    @@media only screen and (max-width : 760px ) {
+        .search_box {
+            width: 99%;
+            margin: 50px auto;
+        }
+    }
+</style>
+<div>
+    <div class="container">
+        <div class="cover">
+            @using (Html.BeginForm("search", "home"))
+            {
+                <div class="search_box">
+                    <div class="col-sm-6 mb5">
+                        <input type="search" name="username" placeholder="Search using Name or Username " class="form-control" />
+                    </div>
+                    <div class="col-sm-6 mb5">
+                        <input type="text" name="location" placeholder="Location e.g Lagos " class="form-control" />
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-success" name="search" value="search" />
+                    </div>
+
+
+                </div>
+            }
+
+
+        </div>
+
+        <div class="search_result">
+            @if (ViewBag.Username != null && ViewBag.Location != null)
+            {
+                <h3 class="text-center"> Results for "@ViewBag.Username" in "@ViewBag.Location"</h3>
+            }
+            else if (ViewBag.Username != null)
+            {
+                <h3 class="text-center"> Results for "@ViewBag.Username" </h3>
+            }
+            else if (ViewBag.Location != null)
+            {
+                <h3 class="text-center"> Results for "@ViewBag.Location"</h3>
+            }
+            else
+            {
+                if (Model != null)
+                {
+                    <h3 class="text-center"> Results for  All Users</h3>
+                }
+            }
+
+
+            @if (Model != null)
+            {
+                if (Model.Count() < 1)
+                {
+                    <p>No user found</p>
+                }
+                foreach (var item in Model)
+                {
+
+                    <div class="col-sm-4">
+                        <div class="result_box">
+                            <div class="col-md-4">
+                                @if (@item.Picture == null)
+                                {
+                                    <img src="~/Images/blank-profile-picture.png" class="img-circle" width="50" alt="profile pic" />
+                                }
+                                else
+                                {
+                                    <img src="@item.Picture" class="img-circle" width="50" alt="profile pic" />
+                                }
+
+                            </div>
+                            <div class="col-md-8" style="margin-left:0px;">
+                                <div style="margin-top:0px;padding-left:10px">
+                                    <h4>@item.Username</h4>
+                                    <h5>@item.Location</h5>
+                                    <a href="/account/profile?username=@item.Username">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+            }
+
+        </div>
+
+
+    </div>
+</div>

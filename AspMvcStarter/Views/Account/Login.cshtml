@@ -1,0 +1,65 @@
+﻿@model AspMvcStarter.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<link href="~/Content/login.css" rel="stylesheet" />
+
+<div class="main_container">
+    <div class="container login_page">
+        <div class=" col-md-6 col-md-offset-3">
+            @if (ViewBag.Status == "success")
+            {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Password has been changed , Login
+                </div>
+            }
+            @if (ViewBag.Status == "error")
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Email Address/Username or Password is incorrect
+                </div>
+            }
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    Login
+                </div>
+
+                <div class="panel-body">
+                    @using (Html.BeginForm("login", "Account"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+
+                            <div class="form-group">
+                                <label>Username / Email Address :</label>
+                                @Html.TextBoxFor(model => model.Email, new { @placeholder = "", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password : </label>
+                                @Html.PasswordFor(model => model.Password, new { @placeholder = "", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <input type="submit" value="Login to your account" class="btn btn-success btn-block" />
+                        </div>
+                    }
+
+                </div>
+                <br />
+                <br />
+                <p class="text-center">Don't have an account? @Html.ActionLink("Sign up", "register") </p>
+
+                <p class="text-center">@Html.ActionLink("Forgot your password ", "forgotpassword") </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmRegistration";
+}
+
+<div class="row">
+    <div class="container col-md-6 col-md-offset-3">
+        <div style="margin:60px">
+            @if (ViewBag.Status == "success")
+            {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>You have confirmed your account. Thanks! </strong> Proceed to <a href="/account/login">Login</a>
+                </div>
+            }
+            @if (ViewBag.Status == "newconfirmation")
+            {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    A new confirmation email has been sent.
+                </div>
+            }
+            @if (ViewBag.Status == "expired")
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    The Activation Code is has expired.
+                    @Html.ActionLink("resend activation code", "send_activation_code", new { email = @ViewBag.email })
+                </div>
+            }
+
+            @if (ViewBag.Status == "invalid")
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    The Activation Code is invalid.
+                </div>
+            }
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">Check Your Phone</div>
+                <div class="panel-body">
+                    <p>
+                        We've texted a code to the phone number ending in '@ViewBag.email'.
+                        Once you receive the code, enter it below to confirm your account.
+                    </p>
+                    <br />
+
+                    @using (Html.BeginForm("AuthenticateAccount", "Account"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("txtEmail", (string)ViewBag.email) ;
+                        @Html.TextBox("TxtCode", null, new { @class = "form-control" })
+
+                        <br />
+
+                        <input type="submit" value="submit" class="btn btn-primary" />
+
+                        @Html.ActionLink("resend activation code", "send_activation_code", new { email = @ViewBag.email })
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

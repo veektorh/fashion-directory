@@ -1,0 +1,174 @@
+﻿@*@model IEnumerable<AspMvcStarter.Models.Photo>*@
+
+@model AspMvcStarter.Models.BigTimelineViewModel
+
+@{
+    ViewBag.Title = "TimeLine";
+    FashionContext database = new FashionContext();
+    int id = Model.User.Id;
+}
+
+<style>
+    .image_box, .btnLike {
+        cursor: pointer;
+    }
+
+    .btnLike{
+        color: burlywood;
+        font-size: 20px;
+    }
+</style>
+<div class="container" style="padding:10px;">
+
+    <div class="col-md-6 col-md-offset-3">
+        @if (Model != null)
+        {
+            if (Model.Photo.Count() < 1)
+            {
+                <p>You aren't Following anyone</p>
+            }
+            foreach (var item in Model.Photo)
+            {
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @if (item.User.Version != null)
+                        {
+                            <img class="img-circle" src="http://res.cloudinary.com/bolum-victor/image/upload/@item.User.Picture.@item.User.Format" width="30" style="border:4px solid whitesmoke;" alt="profile picture" />
+                            <b> @item.User.Username </b>
+
+                        }
+                        else
+                        {
+                            <img class="img-circle" src="@item.User.Picture" width="30" alt=" " /> <b> @item.User.Username </b>
+                        }
+
+                    </div>
+                    <div class="panel-body">
+                        <input type="hidden" class="txtHiddenId" value="@item.Id" />
+                        @if (item.Version != null)
+                        {
+
+                            <div class="image_box" data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal">
+                                <img src="http://res.cloudinary.com/bolum-victor/image/upload/w_500,h_500,c_scale/@item.Name.@item.Format" style="width:100%; " alt="Alternate Text" />
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="image_box" data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal" style=" background:url('@item.Name') center no-repeat; background-size: contain; min-height:500px; "></div>
+                        }
+                        <br />
+
+                        <div>
+                            <div class="divLike-@item.Id">
+                                @{
+                                    var like = database.Likes.Where(a => a.Sender.Id == id && a.Photo.Id == item.Id).FirstOrDefault();
+                                    var count = database.Likes.Where(a => a.Photo.Id == item.Id).ToList().Count;
+                                    if (like != null)
+                                    {
+
+                                        <div onclick="unlikePicture(@item.Id)" class="btnLike" ><i class="fa fa-heart "></i> <span >@count</span> </div>
+                                    }
+                                    else
+                                    {
+
+                                        <div onclick="likePicture(@item.Id)" class="btnLike">
+                                            <i class="fa fa-heart-o "></i> @count
+                                        </div>
+                                    }
+                                }
+
+
+                            </div>
+
+                        </div>
+
+                        <div style="margin-left:0px">
+                            @if (!String.IsNullOrEmpty(@item.Caption))
+                            {
+                                <div><b> @item.User.Username - </b> @item.Caption</div>
+                            }
+                            
+                            <div>
+                                @{
+                                    var time = (DateTime.Now - item.TimePosted).ToString();
+                                    var hours = Convert.ToInt32((DateTime.Now - item.TimePosted).TotalHours);
+                                    var mins = Convert.ToInt32((DateTime.Now - item.TimePosted).TotalMinutes);
+                                    var days = Convert.ToInt32((DateTime.Now - item.TimePosted).TotalDays);
+                                }
+                                @if (hours < 1)
+                                {
+                                    <span>@mins Minutes Ago</span>
+                                }
+                                else if (hours < 25)
+                                {
+                                    <span>@hours Hours Ago</span>
+                                }
+                                else
+                                {
+                                    <span>@days Days Ago</span>
+                                }
+                            </div>
+                        </div>
+
+                        <hr />
+                        @{ 
+                            var Comment_count = database.Comments.Where(a => a.Photo.Id == item.Id).ToList().Count;
+                            if (Comment_count > 1)
+                            {
+                                <div data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal"> View @Comment_count comments</div>
+                            }
+                            if (Comment_count > 0)
+                            {
+                                <div data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal"> View @Comment_count comment</div>
+                            }
+                        }
+                    </div>
+
+                </div>
+                                }
+                            }
+
+    </div>
+</div>
+<div class="modal fade" id="PhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+</div>
+
+<script>
+    var PhotoId;
+
+    function unlikePicture(id) {
+        $.post("/account/unLikePicture", { id: id }, function (res) {
+            console.log(res)
+            $(".divLike-" + id).html(res);
+        })
+    }
+    function likePicture(id) {
+        console.log(id)
+        $.post("/account/LikePicture", { id: id }, function (res) {
+            console.log(res)
+            $(".divLike-" + id).html(res);
+        })
+    }
+
+    $(".btnLike").click(function () {
+        PhotoId = $(".txtHiddenId").val();
+
+        //console.log(PhotoId)
+    })
+
+    function showmodal(id) {
+        PhotoId = id;
+        $.post("/account/GetPicAndComments", { id: PhotoId }, function (res) {
+            $(".modal").html(res)
+            console.log(res)
+            $("#PhotoModal").modal("show")
+        })
+    }
+    $(document).ready(function () {
+
+
+    });
+</script>

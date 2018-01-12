@@ -1,0 +1,107 @@
+﻿@{
+    HttpCookie newcookie = Request.Cookies["user"];
+    FashionContext database = new FashionContext();
+    string username = "";
+    if (newcookie != null)
+    {
+         username = database.Users.Where(a => a.Email == newcookie.Value).FirstOrDefault().Username;
+    }
+}
+
+<style>
+    .fc {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.fc:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+</style>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+
+        <div class="navbar-collapse collapse">
+            @using (Html.BeginForm("search", "home", FormMethod.Post, new {@class = "navbar-form navbar-right" }))
+            {
+                <input type="search" name="username" placeholder="Search " class="fc" value="" />
+
+            }
+            <ul class="nav navbar-nav navbar-right">
+                @if (newcookie == null)
+                {
+                    <li> @Html.ActionLink("Login", "login", "Account") </li>
+                    <li> @Html.ActionLink("Register", "register", "Account") </li>
+                }
+                
+                @if (newcookie != null)
+                {
+                    <li> <a href="/account"><i class="fa fa-home "></i>Timeline</a> </li>
+                    <li> <a href="#" data-toggle="modal" data-target="#NotifModal"> <i class="fa fa-bell "></i> Notifications </a> </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            &nbsp; Hi @username  &nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                &nbsp;&nbsp; @newcookie.Value
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/account/profile?username=@username"><span class="fa fa-user"></span>&nbsp; View Profile</a></li>
+                            <li><a href="/account/changepassword"><span class="fa fa-user"></span>&nbsp; Change Password</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/account/logout"><span class="fa fa-sign-out"></span>&nbsp; Sign Out</a></li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="NotifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                All Notifications
+
+            </div>
+            <div class="modal-body ">
+                <div>
+                    <b>Chidi</b> Followed you. 5days ago
+                    <hr />
+                </div>
+                <div>
+                    <b>Chidi</b> Like your picture. 5days ago
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default send_comment" data-dismiss="modal">close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

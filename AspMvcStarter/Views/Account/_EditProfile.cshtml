@@ -1,0 +1,240 @@
+﻿@model AspMvcStarter.Models.EditProfileViewModel
+
+<!-- Modal -->
+
+<style>
+    .profileImg {
+        background: url('http://res.cloudinary.com/bolum-victor/image/upload/@ViewBag.PicturePublicId.@ViewBag.Format')no-repeat center;
+        background-size: contain;
+        min-height: 100px;
+    }
+
+    .uploadPicture {
+        visibility:hidden;
+    }
+
+    .uploaddropdown {
+        margin-top:30px;
+        margin-left:-20px;
+    }
+
+    @@media only screen and (max-width:760px) {
+
+
+}
+
+</style>
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm("edit", "account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal ">
+                        
+
+                        <div class="form-group">
+                            <div class="col-xs-3 col-md-offset-3">
+
+                                <div class="profileImg">
+                                    @*<img src="http://res.cloudinary.com/bolum-victor/image/upload/g_face,c_thumb,h_100,w_100/@ViewBag.PicturePublicId.@ViewBag.Format"  alt="Alternate Text" />*@
+                                </div>
+
+
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="dropdown uploaddropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Change your profile picture
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#" class="btnUpload">Upload</a></li>
+                                        <li><a href="#" class="btnShowRemovePhotoModal">Remove</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <label >Bio :</label>
+                                @Html.TextBoxFor(model => model.Bio, new { @class = "form-control", @placeholder = "", @id = "editBio" })
+                                @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label>Location :</label>
+                                @Html.TextBoxFor(model => model.Location, new { @class = "form-control", @placeholder = "", @id = "editLocation" })
+                            </div>
+                            <div class="col-xs-6">
+                                <label>Name :</label>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "", @id = "editName" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label>Phone :</label>
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "", @id = "editPhone" })
+                            </div>
+                            <div class="col-xs-6">
+                                <label>Username :</label>
+                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "", @id = "editUsername" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-4">
+                                <label>Facebook :</label>
+                                @Html.TextBoxFor(model => model.facebook, new { @class = "form-control", @placeholder = "", @id = "editFacebook" })
+                            </div>
+                            <div class="col-xs-4">
+                                <label>Instagram :</label>
+                                @Html.TextBoxFor(model => model.instagram, new { @class = "form-control", @placeholder = "", @id = "editInstagram" })
+                            </div>
+                            <div class="col-xs-4">
+                                <label>Twitter :</label>
+                                @Html.TextBoxFor(model => model.twitter, new { @class = "form-control", @placeholder = "", @id = "editTwitter" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-md-offset-4">
+                            <input type="submit" value="Submit"  class="btn btn-primary btn-block" />
+                        </div>
+                        <br /><br />
+                    </div>
+
+
+                }
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6">
+                    <input type="file" class="uploadPicture" accept=".jpg,.png,.jpeg" />
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="uploadProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modalBtnDismiss" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Change Profile Picture </h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to apply this changes
+                <img src="~/images/loader.gif" class="loader" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveUploadImage">Save Changes</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="RemoveProfilePhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modalBtnDismiss" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Remove Profile Picture </h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to remove your profile picture
+                <img src="~/images/loader.gif" class="loader" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnRemoveImage">Yes Remove it </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(".loader").hide();
+
+    //button to trigger the input file event to enable users to choose a picture to upload
+    $(".btnUpload").click(function () {
+        $(".uploadPicture").click();
+    });
+
+    //display confirmation modal to remove profile picture
+    $(".btnShowRemovePhotoModal").click(function () {
+        $("#RemoveProfilePhoto").modal("show")
+    });
+
+    //ajax call to database remove the profile picture
+    $("#btnRemoveImage").click(function () {
+        $(".loader").show();
+        var url = "/account/removeProfilePicture";
+        var data = {};
+
+        $.ajax({
+            type: "Get",
+            url: url,
+            data: data,
+            success: function (response) {
+                location.reload();
+            }
+        });
+    })
+
+    //clear the previous selected file in the input file control
+    $('#uploadProfile').on('hidden.bs.modal', function () {
+        $(".uploadPicture").val("");
+    })
+
+    //show confirmation modal to upload the profile picture
+    $(".uploadPicture").on('change', function () {
+        if ($(".uploadPicture").val() != "") {
+
+            $("#uploadProfile").modal("show");
+        }
+
+    })
+
+    //ajax call to upload the image to the server
+    $("#btnSaveUploadImage").click(function () {
+        $(".loader").show();
+        var file = $(".uploadPicture").get(0).files;
+        var url = '/account/changeProfilePicture';
+        var url = '/account/UploadProfilePicture';
+        var data = new FormData;
+        data.append("file", file[0]);
+
+        $.ajax({
+            type: "Post",
+            url: url,
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                location.reload();
+            }
+        });
+
+    });
+</script>
+

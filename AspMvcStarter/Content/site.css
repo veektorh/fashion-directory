@@ -1,0 +1,25 @@
+﻿
+@font-face {
+    font-family: RobotoCondensed;
+    src: url('../fonts/RobotoCondensed-Regular.ttf')
+}
+body{
+    font-family: 'RobotoCondensed','Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.content_page {
+    margin-top:70px;
+    overflow:hidden;
+    font-family: 'Raleway','RobotoCondensed','Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.navbar {
+    padding:10px 15px;
+}
+
+
+@media only screen and (min-width : 760px ) 
+{
+    
+
+}
+

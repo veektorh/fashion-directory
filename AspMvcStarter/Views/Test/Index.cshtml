@@ -1,0 +1,61 @@
+﻿
+@model IEnumerable<AspMvcStarter.Models.FeaturedPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+<script src="~/Scripts/owl.carousel.min.js"></script>
+<br /><br /><br />
+<button class="btn btn-primary">hello</button>
+<h2>Index</h2>
+
+
+
+
+<div class="owl-carousel owl-theme">
+    @foreach (var item in Model)
+    {
+        <div class="item">
+            <div class="card" style="width: 10rem;">
+                <img class="card-img-top" src="@item.ImageName" alt="Card image cap" />
+                <div class="card-block">
+                    <h4 class="card-title">Ebanks</h4>
+                    <a href="#" class="btn btn-primary">Features</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<footer>fotter</footer>
+<script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 0,
+            autoplay:true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause:true,
+            //responsiveClass: true,
+            //responsive: {
+            //    0: {
+            //        items: 2,
+            //        nav: true
+            //    },
+            //    600: {
+            //        items: 3,
+            //        nav: false
+            //    },
+            //    1000: {
+            //        items: 4,
+            //        nav: true,
+            //        loop: true
+            //    }
+            //}
+        })
+</script>
+
+

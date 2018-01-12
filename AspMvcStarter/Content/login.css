@@ -1,0 +1,16 @@
+﻿
+.main_container{
+    background: #fff;
+    overflow:hidden;
+}
+.login_page{
+    margin-top:100px;
+}
+
+.panel{
+    box-shadow: 0 0.3px 1px #184e8e;
+}
+
+.panel-body{
+    padding:30px;
+}

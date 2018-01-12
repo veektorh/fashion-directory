@@ -1,0 +1,94 @@
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\csc.exe
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\vbc.exe
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\VBCSCompiler.exe
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\AspMvcStarter.dll.config
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\AspMvcStarter.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\AspMvcStarter.pdb
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.SqlServer.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Helpers.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Mvc.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Razor.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Deployment.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Razor.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.SqlServer.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Razor.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Deployment.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Razor.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Helpers.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Mvc.xml
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csprojResolveAssemblyReference.cache
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.FirstMigration.resources
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.AddSocialMdeiaPropertiesToUserClass.resources
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.CorrectSpellingOfInstgram.resources
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addnewtablelist.resources
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.forgotpasswordtable.resources
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csproj.GenerateResource.Cache
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.dll
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.pdb
+C:\Users\BOLUM\Documents\VSProj\ASP WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addtailorfieldtousertable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\csc.exe
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\vbc.exe
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\VBCSCompiler.exe
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\AspMvcStarter.dll.config
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\AspMvcStarter.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\AspMvcStarter.pdb
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Cloudinary.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.SqlServer.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Newtonsoft.Json.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Helpers.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Mvc.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Razor.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Deployment.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Razor.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\EntityFramework.SqlServer.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Razor.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Deployment.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Razor.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Helpers.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Mvc.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.FirstMigration.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.AddSocialMdeiaPropertiesToUserClass.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.CorrectSpellingOfInstgram.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addnewtablelist.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.forgotpasswordtable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addtailorfieldtousertable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addtimetophototable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addcommentnotificationliketable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addtwomorecolumntophototable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.addtwomorecolumntousertable.resources
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csproj.GenerateResource.Cache
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.dll
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.pdb
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csprojResolveAssemblyReference.cache
