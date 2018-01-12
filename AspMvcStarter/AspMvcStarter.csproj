@@ -221,6 +221,7 @@
     <Content Include="Views\Account\TestCloudinary.cshtml" />
     <Content Include="Views\Account\_LikePage.cshtml" />
     <Content Include="Views\Account\_unLikePage.cshtml" />
+    <Content Include="Views\Account\_test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

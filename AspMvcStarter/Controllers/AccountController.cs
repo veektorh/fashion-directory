@@ -16,11 +16,12 @@ namespace AspMvcStarter.Controllers
         FashionContext database = new FashionContext();
         cloudinaryService cloudinaryService = new cloudinaryService("318747541398173", "qNJqtPYJxQcVJguPmxPqWTSKC90", "bolum-victor");
 
-        public ActionResult TestCloudinary(HttpPostedFileBase file)
+        public ActionResult Test()
         {
-            var result = cloudinaryService.UploadImage(file);
-
-            return Json(result);
+            var pic = database.Photos.Where(a => a.Id == 25).FirstOrDefault();
+            var comments = database.Comments.Where(a => a.Photo.Id == pic.Id).ToList();
+            var picAndComments = new picAndComments() { Photo = pic, Comment = comments };
+            return PartialView("_test", picAndComments);
         }
         public class likemodel
         {
@@ -153,7 +154,7 @@ namespace AspMvcStarter.Controllers
             var pic = database.Photos.Where(a => a.Id == id).FirstOrDefault();
             var comments = database.Comments.Where(a => a.Photo.Id == pic.Id).ToList();
             var picAndComments = new picAndComments() { Photo = pic, Comment = comments };
-            return PartialView(picAndComments);
+            return PartialView("_test" ,picAndComments);
         }
 
         public ActionResult Login()

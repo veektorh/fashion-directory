@@ -1,5 +1,4 @@
-﻿
-@model AspMvcStarter.Controllers.AccountController.picAndComments
+﻿@model AspMvcStarter.Controllers.AccountController.picAndComments
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -20,7 +19,7 @@
                     <img src="@Model.Photo.Name" style="width:500px;height:500px;" alt="Alternate Text" />
                 </div>
             }
-            
+
             <div>
                 @foreach (var item in Model.Comment)
                 {
@@ -31,39 +30,19 @@
             </div>
         </div>
 
-        <div class="modal-footer " >
-            <input type="text" class="form-control body" placeholder="add comment" />
-            
-            <button type="button" class="btn btn-default send_comment" >submit</button>
+        <div class="modal-footer ">
+            @Html.TextBox("commentbody",null, new { @class ="commentbody" })
+            @*<input type="text" class="form-control Commentbody" placeholder="add comment" />*@
+
+            <button type="button" class="btn btn-default send_comment">submit</button>
         </div>
 
-        <input type="text" name="name" class="test" value=" " />
-        <input type="button" name="name" value="test" class="testSubmit" />
     </div>
 </div>
+
+
 <script>
-    function test() {
-        console.log("comment ")
-    }
-    $(".testSubmit").click(function () {
-        console.log($(".test").val())
-    })
     $(".send_comment").click(function () {
-        var id = $(".txtHiddenCommentId").val();
-        var body = $(".body").val();
-        var test = $("#test").val();
-        //debugger;
-        console.log(body);
-        console.log($("#test").val());
-        //$("#PhotoModal").modal("hide");
-        //$.post("/account/InsertComments", { id: id , body: body }, function (res) {
-        //    console.log(res)
-        //})
-    });
+        console.log($(".commentbody").val())
+    })
 </script>
-
-
-
-
-
-

@@ -49,7 +49,7 @@
                         @if (item.Version != null)
                         {
 
-                            <div class="image_box" data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal">
+                            <div class="image_box" data-toggle="modal" onclick="showmodal(@item.Id)" >
                                 <img src="http://res.cloudinary.com/bolum-victor/image/upload/w_500,h_500,c_scale/@item.Name.@item.Format" style="width:100%; " alt="Alternate Text" />
                             </div>
 
@@ -129,7 +129,7 @@
                 </div>
                                 }
                             }
-
+        
     </div>
 </div>
 <div class="modal fade" id="PhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -139,6 +139,7 @@
 <script>
     var PhotoId;
 
+    
     function unlikePicture(id) {
         $.post("/account/unLikePicture", { id: id }, function (res) {
             console.log(res)
@@ -163,8 +164,7 @@
         PhotoId = id;
         $.post("/account/GetPicAndComments", { id: PhotoId }, function (res) {
             $(".modal").html(res)
-            console.log(res)
-            $("#PhotoModal").modal("show")
+            $(".modal").modal('show')
         })
     }
     $(document).ready(function () {
