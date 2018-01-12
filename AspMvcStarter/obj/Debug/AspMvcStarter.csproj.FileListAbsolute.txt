@@ -78,6 +78,7 @@ C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Webpages.Razor.xml
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Helpers.xml
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\bin\System.Web.Mvc.xml
+C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csprojResolveAssemblyReference.cache
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.FirstMigration.resources
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.AddSocialMdeiaPropertiesToUserClass.resources
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.Migrations.CorrectSpellingOfInstgram.resources
@@ -91,4 +92,3 @@ C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csproj.GenerateResource.Cache
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.dll
 C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.pdb
-C:\Users\BOLUM\Documents\VSProj\WEB PROJECTS\ASP MVC\AspMvcStarter\AspMvcStarter\obj\Debug\AspMvcStarter.csprojResolveAssemblyReference.cache

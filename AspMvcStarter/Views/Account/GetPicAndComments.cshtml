@@ -32,9 +32,9 @@
         </div>
 
         <div class="modal-footer">
-            <input type="text" class="form-control body" name="name" value="" placeholder="add comment" />
-            <button type="button" class="btn btn-default send_comment" data-dismiss="modal">submit</button>
-
+            <input type="text" class="form-control body" placeholder="add comment" />
+            
+            <button type="button" class="btn btn-default send_comment" >submit</button>
         </div>
     </div>
 </div>
@@ -42,13 +42,18 @@
     function test() {
         console.log("comment ")
     }
+
     $(".send_comment").click(function () {
         var id = $(".txtHiddenCommentId").val();
         var body = $(".body").val();
-        console.log(id)
-        $.post("/account/InsertComments", { id: id , body: body }, function (res) {
-            console.log(res)
-        })
+        var test = $("#test").val();
+        //debugger;
+        console.log(body);
+        console.log($("#test").val());
+        //$("#PhotoModal").modal("hide");
+        //$.post("/account/InsertComments", { id: id , body: body }, function (res) {
+        //    console.log(res)
+        //})
     });
 </script>
 

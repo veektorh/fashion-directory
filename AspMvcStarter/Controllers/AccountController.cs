@@ -48,21 +48,27 @@ namespace AspMvcStarter.Controllers
             newlikes.Sender = getLoggedInUser();
             newlikes.Receiver = photo.User;
 
-            var newnotification = new Notification()
+            var existingNotifcation = database.Notifications.Where(a => a.Photo.Id == id && a.Type == "1").FirstOrDefault();
+            if (existingNotifcation == null)
             {
-                Type = "1",
-                Photo = photo,
-                Sender = getLoggedInUser(),
-                isUnread = 0,
-                Receiver = photo.User,
-                TimePosted = DateTime.Now
-            };
+                var newnotification = new Notification()
+                {
+                    Type = "1",
+                    Photo = photo,
+                    Sender = getLoggedInUser(),
+                    isUnread = 0,
+                    Receiver = photo.User,
+                    TimePosted = DateTime.Now
+                };
+                database.Notifications.Add(newnotification);
+            }
+
 
             database.Likes.Add(newlikes);
             database.SaveChanges();
             var noOfLikes = database.Likes.Where(a => a.Photo.Id == id).Count();
-            var newlikemodel = new likemodel() { id = id , no = noOfLikes };
-            return PartialView("_LikePage",newlikemodel);
+            var newlikemodel = new likemodel() { id = id, no = noOfLikes };
+            return PartialView("_LikePage", newlikemodel);
         }
         // GET: Account
         public ActionResult Index()
@@ -71,7 +77,7 @@ namespace AspMvcStarter.Controllers
             {
                 var username = Request.Cookies["username"].Value;
                 var LoggedInUser = database.Users.Where(a => a.Username == username).FirstOrDefault();
-                
+
                 if (LoggedInUser != null)
                 {
                     var photoLists =
@@ -112,7 +118,7 @@ namespace AspMvcStarter.Controllers
             public List<Comment> Comment { get; set; }
 
         }
-        public ActionResult InsertComments(int id , string body)
+        public ActionResult InsertComments(int id, string body)
         {
             var photo = database.Photos.Where(a => a.Id == id).FirstOrDefault();
             var newcomment = new Comment();
@@ -121,6 +127,22 @@ namespace AspMvcStarter.Controllers
             newcomment.Receiver = photo.User;
             newcomment.Sender = getLoggedInUser();
             newcomment.Body = body;
+
+            var existingNotifcation = database.Notifications.Where(a => a.Photo.Id == id && a.Type == "2").FirstOrDefault();
+            if (existingNotifcation == null)
+            {
+                var newnotification = new Notification()
+                {
+                    Type = "2",
+                    Photo = photo,
+                    Sender = getLoggedInUser(),
+                    isUnread = 0,
+                    Receiver = photo.User,
+                    TimePosted = DateTime.Now
+                };
+                database.Notifications.Add(newnotification);
+            }
+
             database.Comments.Add(newcomment);
             database.SaveChanges();
             return Json(true);
@@ -531,12 +553,12 @@ namespace AspMvcStarter.Controllers
                         if (result != null)
                         {
                             currentUser.Picture = result.PublicId;
-                            currentUser.Version = "v"+result.Version;
+                            currentUser.Version = "v" + result.Version;
                             currentUser.Format = result.Format;
                         }
 
 
-                            var picturepath = Server.MapPath("/images/users/" + currentUser.Id + "__" + Path.GetExtension(file.FileName).ToLower());
+                        var picturepath = Server.MapPath("/images/users/" + currentUser.Id + "__" + Path.GetExtension(file.FileName).ToLower());
                         //currentUser.Picture = "../images/users/" + currentUser.Id + "__" + Path.GetExtension(file.FileName).ToLower();
                         //file.SaveAs(picturepath);
                         database.SaveChanges();
@@ -567,7 +589,7 @@ namespace AspMvcStarter.Controllers
                             //var pictureName = "../images/uploads/" + lastPhotoId + "__" + Path.GetExtension(file.FileName).ToLower();
                             Photo newPhoto = new Photo();
                             newPhoto.Name = result.PublicId;
-                            newPhoto.Version = "v"+result.Version;
+                            newPhoto.Version = "v" + result.Version;
                             newPhoto.Format = result.Format;
                             newPhoto.User = currentUser;
                             newPhoto.Caption = caption;
@@ -576,7 +598,7 @@ namespace AspMvcStarter.Controllers
                             database.Photos.Add(newPhoto);
                             database.SaveChanges();
                         }
-                        
+
 
                     }
 
