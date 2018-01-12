@@ -47,6 +47,17 @@ namespace AspMvcStarter.Controllers
             newlikes.Photo = photo;
             newlikes.Sender = getLoggedInUser();
             newlikes.Receiver = photo.User;
+
+            var newnotification = new Notification()
+            {
+                Type = "1",
+                Photo = photo,
+                Sender = getLoggedInUser(),
+                isUnread = 0,
+                Receiver = photo.User,
+                TimePosted = DateTime.Now
+            };
+
             database.Likes.Add(newlikes);
             database.SaveChanges();
             var noOfLikes = database.Likes.Where(a => a.Photo.Id == id).Count();
