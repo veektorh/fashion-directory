@@ -18,10 +18,10 @@ namespace AspMvcStarter.Controllers
 
         public ActionResult Test()
         {
-            var pic = database.Photos.Where(a => a.Id == 25).FirstOrDefault();
-            var comments = database.Comments.Where(a => a.Photo.Id == pic.Id).ToList();
-            var picAndComments = new picAndComments() { Photo = pic, Comment = comments };
-            return PartialView("_test", picAndComments);
+            var loggedInUserId = getLoggedInUser().Id;
+            var Notifications = database.Notifications.Where(a => a.Receiver.Id == loggedInUserId).ToList();
+            
+            return Json(Notifications);
         }
         public class likemodel
         {
@@ -43,7 +43,9 @@ namespace AspMvcStarter.Controllers
 
         public ActionResult LikePicture(int id)
         {
+            var LoggedInUserId = getLoggedInUser().Id;
             var photo = database.Photos.Where(a => a.Id == id).FirstOrDefault();
+            
             var newlikes = new Like();
             newlikes.Photo = photo;
             newlikes.Sender = getLoggedInUser();
@@ -90,10 +92,12 @@ namespace AspMvcStarter.Controllers
 
                     ViewBag.Timeline = photoLists;
                     ViewBag.LoggedInUser = LoggedInUser;
+                    var Notifications = database.Notifications.Where(a => a.Receiver.Id == LoggedInUser.Id).ToList();
                     var bigmodel = new BigTimelineViewModel()
                     {
                         User = LoggedInUser,
                         Photo = photoLists.ToList(),
+                        Notification = Notifications
                     };
                     return View(bigmodel);
                 }
@@ -154,7 +158,7 @@ namespace AspMvcStarter.Controllers
             var pic = database.Photos.Where(a => a.Id == id).FirstOrDefault();
             var comments = database.Comments.Where(a => a.Photo.Id == pic.Id).ToList();
             var picAndComments = new picAndComments() { Photo = pic, Comment = comments };
-            return PartialView("_test" ,picAndComments);
+            return PartialView("GetPicAndComments", picAndComments);
         }
 
         public ActionResult Login()

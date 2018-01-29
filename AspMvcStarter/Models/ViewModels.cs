@@ -152,6 +152,7 @@ namespace AspMvcStarter.Models
     {
         public User User { get; set; }
         public List<Photo> Photo { get; set; }
+        public List<Notification> Notification { get; set; }
     }
 
     public class changeProfilePictureViewModel

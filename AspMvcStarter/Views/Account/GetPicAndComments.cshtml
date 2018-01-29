@@ -21,7 +21,7 @@
                 </div>
             }
             
-            <div>
+            <div style="padding:5px 0px;max-height:100px; overflow:scroll;">
                 @foreach (var item in Model.Comment)
                 {
                     <div>
@@ -37,8 +37,6 @@
             <button type="button" class="btn btn-default send_comment" >submit</button>
         </div>
 
-        <input type="text" name="name" class="test" value=" " />
-        <input type="button" name="name" value="test" class="testSubmit" />
     </div>
 </div>
 <script>
@@ -51,15 +49,14 @@
     $(".send_comment").click(function () {
         var id = $(".txtHiddenCommentId").val();
         var body = $(".body").val();
-        var test = $("#test").val();
-        //debugger;
-        console.log(body);
-        console.log($("#test").val());
-        //$("#PhotoModal").modal("hide");
-        //$.post("/account/InsertComments", { id: id , body: body }, function (res) {
-        //    console.log(res)
-        //})
+
+        $("#PhotoModal").modal("hide");
+        $.post("/account/InsertComments", { id: id , body: body }, function (res) {
+            console.log(res)
+        })
+
     });
+
 </script>
 
 

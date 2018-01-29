@@ -7,17 +7,16 @@
 
 <style>
     .cover {
-        padding:10px;
+        padding: 10px;
         background: #636b6f;
         /*background-image: linear-gradient( 135deg, #F97794 10%, #623AA2 100%);*/
         /*background: url(../images/2.jpg) center no-repeat;*/
         background: #BBD2C5; /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #536976, #BBD2C5); /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background:whitesmoke;
+        background: whitesmoke;
         background-size: cover;
         overflow: hidden;
-        
     }
 
     .text {
@@ -44,8 +43,9 @@
         margin: 10px;
         background: whitesmoke;
     }
-    .fs18{
-        font-size:18px;
+
+    .fs18 {
+        font-size: 18px;
     }
 </style>
 <div>
@@ -57,16 +57,21 @@
             </div>
             <div class="cover">
                 <div class="row">
-                    <div class=" col-md-3" >
+                    <div class=" col-md-3">
                         <div class="profile_image_container">
-                            <img src="http://res.cloudinary.com/bolum-victor/image/upload/g_face,c_thumb,h_100,w_100/@ViewBag.PicturePublicId.@ViewBag.Format" style="min-width:200px;max-height:250px;" class="img-thumbnail img-responsive" alt="profile picture" />
+                            @if(ViewBag.PicturePublicId == null){
+                                <img src="@ViewBag.PictureUrl" alt="" style="min-width: 200px; max-height: 250px;" class="img-thumbnail img-responsive" />
+                            }else{
+                            <img src="http://res.cloudinary.com/bolum-victor/image/upload/g_face,c_thumb,h_100,w_100/@ViewBag.PicturePublicId.@ViewBag.Format" style="min-width: 200px; max-height: 250px;" class="img-thumbnail img-responsive" alt="profile picture" />
+                            }
+
                         </div>
                     </div>
 
                     <div class="">
-                        <div class="col-md-8" >
-                            <h3 class=""> @Model.User.Name </h3>
-                            <h4 class=""> <i> @@@Model.User.Username </i> </h4>
+                        <div class="col-md-8">
+                            <h3 class="">@Model.User.Name </h3>
+                            <h4 class=""><i>@@@Model.User.Username </i></h4>
                             <br />
                             <div class="row">
                                 <div class="col-md-2"><span class="fs18"><b>@ViewBag.Posts</b></span> <span>posts</span> </div>
@@ -80,15 +85,15 @@
                                 @{
                                     if (ViewBag.ProfileOwner)
                                     {
-                                        <a href="#" class="btn btn-success btnUploadNewPhoto" style=""> <i class="glyphicon glyphicon-plus"></i> Upload photo </a>
-                                        <a href="#" class="btn btn-primary btnEdit" data-toggle="modal" data-target="#editProfileModal"><span class="fa fa-pencil "> </span> Edit Profile</a>
-                                    }
+                                        <a href="#" class="btn btn-success btnUploadNewPhoto" style=""><i class="glyphicon glyphicon-plus"></i>Upload photo </a>
+                                <a href="#" class="btn btn-primary btnEdit" data-toggle="modal" data-target="#editProfileModal"><span class="fa fa-pencil "></span>Edit Profile</a>
+                                }
 
                                     if (!ViewBag.ProfileOwner && ViewBag.isLoggedIn)
                                     {
                                         <a href="#" class="btn btn-success btnRemoveOrAddFromList">Remove From List</a>
 
-                                    }
+                                }
                                 }
 
 
@@ -97,7 +102,7 @@
                     </div>
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -111,13 +116,12 @@
                         <li role="presentation" class=""><a href="#photos_tab" role="tab" data-toggle="tab">Photos</a></li>
                         @if (ViewBag.ProfileOwner)
                         {
-                            <li role="presentation" class=""><a href="#list_tab" role="tab" data-toggle="tab">List</a></li> }
+                            <li role="presentation" class=""><a href="#list_tab" role="tab" data-toggle="tab">List</a></li>
+                        }
 
                     </ul>
                 </div>
                 <div class="col-md-4">
-
-
                 </div>
             </div>
 
@@ -155,13 +159,13 @@
                     <br />
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="@Model.User.facebook" target="_blank"> <i class="fa fa-facebook-square fa-3x"></i> </a>
+                            <a href="@Model.User.facebook" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="@Model.User.twitter" target="_blank"> <i class="fa fa-twitter-square fa-3x"></i> </a>
+                            <a href="@Model.User.twitter" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="@Model.User.instgram" target="_blank"> <i class="fa fa-instagram fa-3x"></i> </a>
+                            <a href="@Model.User.instgram" target="_blank"><i class="fa fa-instagram fa-3x"></i></a>
                         </div>
                     </div>
                     <br />
@@ -177,14 +181,16 @@
                             @if (item.Version != null)
                             {
                                 <a title="Click to View Full Image" href="http://res.cloudinary.com/bolum-victor/image/upload/@item.Name.@item.Format"
-                                   target="_blank"><img src="http://res.cloudinary.com/bolum-victor/image/upload/@item.Name.@item.Format" style="min-width:300px; min-height:300px; max-width:300px; max-height:300px; width:auto; height:auto; border:4px solid whitesmoke;" class="" alt="profile picture" /></a>
-                                    <p> @item.Caption </p>
+                                    target="_blank">
+                                    <img src="http://res.cloudinary.com/bolum-victor/image/upload/@item.Name.@item.Format" style="min-width: 300px; min-height: 300px; max-width: 300px; max-height: 300px; width: auto; height: auto; border: 4px solid whitesmoke;" class="" alt="profile picture" /></a>
+                            <p>@item.Caption </p>
 
                             }
                             else
                             {
-                                <a title="Click to View Full Image" href="@item.Name" target="_blank"><img src="@item.Name" style="min-width:300px; min-height:300px; max-width:300px; max-height:300px; width:auto; height:auto; border:4px solid whitesmoke;" class="" alt="profile picture" /></a>
-                                <p> @item.Caption </p>
+                                <a title="Click to View Full Image" href="@item.Name" target="_blank">
+                                    <img src="@item.Name" style="min-width: 300px; min-height: 300px; max-width: 300px; max-height: 300px; width: auto; height: auto; border: 4px solid whitesmoke;" class="" alt="profile picture" /></a>
+                            <p>@item.Caption </p>
                             }
                             
                         </div>
@@ -210,8 +216,8 @@
                                                 <img src="@item.FollowedUser.Picture" class="img-circle" width="50" alt="profile pic" />
                                             }
                                         </div>
-                                        <div class="col-xs-8" style="margin-left:-0px;">
-                                            <div style="margin-top:0px;padding-left:0px">
+                                        <div class="col-xs-8" style="margin-left: -0px;">
+                                            <div style="margin-top: 0px; padding-left: 0px">
 
                                                 <h4>@item.FollowedUser.Username</h4>
                                                 <h5>@item.FollowedUser.Location</h5>
@@ -220,7 +226,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            }
+                    }
 
                         }
                     }
@@ -240,7 +246,7 @@
                     <label>Enter Caption : </label>
                     <input type="text" class="form-control" id="captionText" />
                     <img src="~/images/loader.gif" class="loader" />
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -251,7 +257,7 @@
         </div>
     </div>
 
-    <input type="file" class="uploadPicture2" accept=".jpg,.png,.jpeg" style="visibility:hidden" />
+    <input type="file" class="uploadPicture2" accept=".jpg,.png,.jpeg" style="visibility: hidden" />
     <input type="hidden" class="txtHiddenUsername" value="@Model.User.Username" />
 
 
@@ -260,11 +266,11 @@
 <script>
     $(".error_status").hide();
     var user = $(".txtHiddenUsername").val(); //global username
-    
+
     $(document).ready(function () {
         setButtonRemoveOrAddListText();
     })
-    
+
     $(".btnRemoveOrAddFromList").click(function () {
         var btntext = $(".btnRemoveOrAddFromList").text();
 
@@ -296,7 +302,7 @@
     }
     function setButtonRemoveOrAddListText() {
         var user = $(".txtHiddenUsername").val();
-        $.post("/account/JsonIsUserFollowing", {Username:user}, function (res) {
+        $.post("/account/JsonIsUserFollowing", { Username: user }, function (res) {
             if (res) {
                 $(".btnRemoveOrAddFromList").text("Remove from list");
             } else {
@@ -345,7 +351,7 @@
             error: function (err) {
                 $("#uploadNewPhoto").modal("hide");
                 $(".error_status").show();
-        }
+            }
         });
 
     });
