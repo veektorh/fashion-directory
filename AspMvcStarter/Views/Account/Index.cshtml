@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<AspMvcStarter.Models.Photo>*@
-
+﻿
 @model AspMvcStarter.Models.BigTimelineViewModel
 
 @{
@@ -9,11 +8,11 @@
 }
 
 <style>
-    .image_box, .btnLike i{
+    .image_box, .btnLike i {
         cursor: pointer;
     }
 
-    .btnLike{
+    .btnLike {
         color: burlywood;
         font-size: 20px;
     }
@@ -49,7 +48,7 @@
                         @if (item.Version != null)
                         {
 
-                            <div class="image_box" data-toggle="modal" onclick="showmodal(@item.Id)" >
+                            <div class="image_box" onclick="showmodal(@item.Id)" >
                                 <img src="http://res.cloudinary.com/bolum-victor/image/upload/w_500,h_500,c_scale/@item.Name.@item.Format" style="width:100%; " alt="Alternate Text" />
                             </div>
 
@@ -114,7 +113,9 @@
 
                         <hr />
                         @{ 
-                            var Comment_count = database.Comments.Where(a => a.Photo.Id == item.Id).ToList().Count;
+                            var Comment = database.Comments.Where(a => a.Photo.Id == item.Id).ToList();
+                            var Comment_count = Comment.Count;
+
                             if (Comment_count > 1)
                             {
                                 <div data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal"> View @Comment_count comments</div>
@@ -123,6 +124,7 @@
                             {
                                 <div data-toggle="modal" onclick="showmodal(@item.Id)" data-target="#PhotoModal"> View @Comment_count comment</div>
                             }
+
                         }
                     </div>
 
@@ -139,7 +141,7 @@
 <script>
     var PhotoId;
 
-    
+
     function unlikePicture(id) {
         $.post("/account/unLikePicture", { id: id }, function (res) {
             console.log(res)
@@ -163,8 +165,9 @@
     function showmodal(id) {
         PhotoId = id;
         $.post("/account/GetPicAndComments", { id: PhotoId }, function (res) {
-            $(".modal").html(res)
-            $(".modal").modal('show')
+            $("#PhotoModal").html(res)
+
+            $("#PhotoModal").modal('show')
         })
     }
     $(document).ready(function () {
