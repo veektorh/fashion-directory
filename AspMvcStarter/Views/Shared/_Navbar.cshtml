@@ -1,4 +1,6 @@
-﻿@{
+﻿
+
+@{
     HttpCookie newcookie = Request.Cookies["user"];
     FashionContext database = new FashionContext();
     string username = "";
@@ -40,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Fashion Directory", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
 
         <div class="navbar-collapse collapse">
@@ -79,7 +81,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="NotifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+@*<div class="modal fade" id="NotifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -88,7 +90,7 @@
 
             </div>
             <div class="modal-body ">
-                @if (Model != null)
+                @if (Model.Notification != null)
                         {
                 foreach (var item in Model.Notification)
             {
@@ -155,7 +157,7 @@ if(item.Type == "2"){
         </div>
     </div>
 
-</div>
+</div>*@
 
 <script>
     $("#notifLink").click(function () {

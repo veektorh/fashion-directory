@@ -7,7 +7,7 @@
     background-color: #184e8e;
     background: linear-gradient(135deg, #172a74, #21a9af) no-repeat;
     /*background: linear-gradient( 135deg, #ABDCFF 0%, #0396FF 100%);*/
-    background: url(../images/bg.jpg) no-repeat center ;
+    background: url('http://res.cloudinary.com/bolum-victor/image/upload/v1517300721/bg_wrzvrt.jpg') no-repeat center ;
     background-size: cover;
     background-attachment:fixed;
     color:white;

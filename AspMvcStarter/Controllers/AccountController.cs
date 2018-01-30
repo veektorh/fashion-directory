@@ -478,7 +478,7 @@ namespace AspMvcStarter.Controllers
                     }
                     else
                     {
-                        ViewBag.PictureUrl = "../images/blank-profile-picture.png";
+                        ViewBag.PictureUrl = "http://res.cloudinary.com/bolum-victor/image/upload/v1517301019/blank-profile-picture_mrg5ql.png";
                     }
 
                     var EditProfile = new EditProfileViewModel();
