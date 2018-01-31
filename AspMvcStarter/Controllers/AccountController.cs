@@ -48,6 +48,7 @@ namespace AspMvcStarter.Controllers
         public ActionResult LikePicture(int id)
         {
             var LoggedInUserId = getLoggedInUser().Id;
+            var LoggedInUser = getLoggedInUser();
             var photo = database.Photos.Where(a => a.Id == id).FirstOrDefault();
 
             var newlikes = new Like();
@@ -55,7 +56,7 @@ namespace AspMvcStarter.Controllers
             newlikes.Sender = getLoggedInUser();
             newlikes.Receiver = photo.User;
 
-            var existingNotifcation = database.Notifications.Where(a => a.Photo.Id == id && a.Type == "1").FirstOrDefault();
+            var existingNotifcation = database.Notifications.Where(a => a.Photo.Id == id && a.Type == "1" && a.Sender == LoggedInUser ).FirstOrDefault();
             if (existingNotifcation == null)
             {
                 var newnotification = new Notification()
