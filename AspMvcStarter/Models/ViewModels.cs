@@ -77,6 +77,12 @@ namespace AspMvcStarter.Models
                             newUser.Tailor = 1;
                         }
                         database.Users.Add(newUser);
+
+                        //after registration each user get assigned a first friend, so TL isnt empty
+                        var firstFriend = database.Users.Where(a => a.Id == 1).FirstOrDefault();
+                        var newList = new List() { FollowingUser = newUser, FollowedUser = firstFriend };
+
+                        database.Lists.Add(newList);
                         database.SaveChanges();
                         return 1; //successful
                     }

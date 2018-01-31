@@ -1,12 +1,12 @@
-﻿
-
-@{
+﻿@{
     HttpCookie newcookie = Request.Cookies["user"];
     FashionContext database = new FashionContext();
     string username = "";
+    List<AspMvcStarter.Models.Notification> notif = new List<AspMvcStarter.Models.Notification>();
     if (newcookie != null)
     {
          username = database.Users.Where(a => a.Email == newcookie.Value).FirstOrDefault().Username;
+         notif = database.Notifications.Where(a => a.Receiver.Username == username && a.isUnread == 0).ToList();
     }
 }
 
@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Fashion Directory", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("InstaFashion", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
 
         <div class="navbar-collapse collapse">
@@ -61,7 +61,12 @@
                 @if (newcookie != null)
                 {
                     <li><a href="/account"><i class="fa fa-home "></i>Timeline</a> </li>
-                <li><a href="#" id="notifLink"><i class="fa fa-bell "></i>Notifications </a></li>
+                <li><a href="#" id="notifLink"><i class="fa fa-bell "></i>Notifications 
+                @if(notif.Count > 0){
+                <span class="badge"> @notif.Count </span>
+}
+
+                    </a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp; Hi @username  &nbsp;<span class="caret"></span>
                     </a>
@@ -81,7 +86,7 @@
     </div>
 </div>
 
-@*<div class="modal fade" id="NotifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="NotifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -90,9 +95,9 @@
 
             </div>
             <div class="modal-body ">
-                @if (Model.Notification != null)
+                @if (notif != null)
                         {
-                foreach (var item in Model.Notification)
+                foreach (var item in notif)
             {
 if(item.Type == "1"){
                 <div>
@@ -157,10 +162,13 @@ if(item.Type == "2"){
         </div>
     </div>
 
-</div>*@
+</div>
 
 <script>
     $("#notifLink").click(function () {
         $("#NotifModal").modal('show');
+        $.post('/account/ClearNotifications', {}, function (res) {
+            //clear notifications
+        })
     });
 </script>

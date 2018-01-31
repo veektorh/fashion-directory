@@ -14,13 +14,15 @@ namespace AspMvcStarter.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if (Request.Cookies["username"] != null)
+            if (Request.Cookies["user"] != null)
             {
                 ViewBag.Username = Request.Cookies["username"].Value;
+                return RedirectToAction("index", "account");
             }
             var featuredpostlist = database.Photos.ToList().OrderBy(a => Guid.NewGuid()).Take(10);
 
             return View(featuredpostlist);
+            
         }
 
         public ActionResult Search()

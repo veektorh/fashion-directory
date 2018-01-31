@@ -98,11 +98,11 @@
                             <div class="col-md-4">
                                 @if (@item.Picture == null)
                                 {
-                                    <img src="~/Images/blank-profile-picture.png" class="img-circle" width="50" alt="profile pic" />
+                                    <img src="http://res.cloudinary.com/bolum-victor/image/upload/v1517301019/blank-profile-picture_mrg5ql.png" class="img-circle" width="50" alt="profile pic" />
                                 }
                                 else
                                 {
-                                    <img src="@item.Picture" class="img-circle" width="50" alt="profile pic" />
+                                    <img src="http://res.cloudinary.com/bolum-victor/image/upload/g_face,c_thumb,h_100,w_100/@item.Picture.@item.Format" class="img-circle" width="50" alt="profile pic" />
                                 }
 
                             </div>

@@ -16,12 +16,16 @@ namespace AspMvcStarter.Controllers
         FashionContext database = new FashionContext();
         cloudinaryService cloudinaryService = new cloudinaryService("318747541398173", "qNJqtPYJxQcVJguPmxPqWTSKC90", "bolum-victor");
 
-        public ActionResult Test()
+        public ActionResult ClearNotifications()
         {
-            var loggedInUserId = getLoggedInUser().Id;
-            var Notifications = database.Notifications.Where(a => a.Receiver.Id == loggedInUserId).ToList();
-            
-            return Json(Notifications);
+            var username = getLoggedInUser().Username;
+            var unreadNotification = database.Notifications.Where(a => a.Receiver.Username == username).ToList();
+            foreach (var item in unreadNotification)
+            {
+                item.isUnread = 1;
+            }
+            database.SaveChanges();
+            return null;
         }
         public class likemodel
         {
@@ -45,7 +49,7 @@ namespace AspMvcStarter.Controllers
         {
             var LoggedInUserId = getLoggedInUser().Id;
             var photo = database.Photos.Where(a => a.Id == id).FirstOrDefault();
-            
+
             var newlikes = new Like();
             newlikes.Photo = photo;
             newlikes.Sender = getLoggedInUser();
@@ -639,7 +643,16 @@ namespace AspMvcStarter.Controllers
         {
             if (Request.Cookies["user"] != null)
             {
-                Response.Cookies["user"].Expires = DateTime.Now.AddDays(-1);
+                //Response.Cookies["user"].Expires = DateTime.Now.AddDays(-1);
+                var userCookie = new HttpCookie( "user" );
+                var usernameCookie = new HttpCookie("username");
+
+                userCookie.Expires = DateTime.Now.AddDays( -1 );
+                usernameCookie.Expires = DateTime.Now.AddDays(-1);
+
+                Response.Cookies.Add(userCookie);
+                Response.Cookies.Add(usernameCookie);
+
             }
 
             return RedirectToAction("login");
