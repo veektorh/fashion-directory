@@ -108,7 +108,7 @@ namespace AspMvcStarter.Controllers
 
             }
 
-            return HttpNotFound();
+            return RedirectToAction("login");
         }
 
         public User getLoggedInUser()
