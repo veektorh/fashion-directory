@@ -3,6 +3,7 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
+            Picture
             <button type="button" class="close modalBtnDismiss" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
         </div>
@@ -10,7 +11,7 @@
             <input type="hidden" class="txtHiddenCommentId" value="@Model.Photo.Id" />
             @if (Model.Photo.Format != null)
             {
-                <div class="image_box" data-toggle="modal" data-target="#PhotoModal">
+                <div class="image_box" data-toggle="modal" data-target="#PhotoModal" style="overflow:auto">
                     <img src="http://res.cloudinary.com/bolum-victor/image/upload/w_500,h_500,c_scale/@Model.Photo.Name.@Model.Photo.Format" alt="Alternate Text" />
                 </div>
             }
